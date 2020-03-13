@@ -1,7 +1,7 @@
 // require libs
 let express = require("express"),
   app = express(),
-  port = process.env.xx_PORT || 3000,
+  port = process.env.PORT || 3000,
   mongoose = require("mongoose"),
   bodyParser = require("body-parser"),
   config = require("./EZApp/config/config"),
@@ -24,12 +24,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware 2: static handling
 app.use(express.static("./static"));
-// 404 handling
-app.use((req, res, next) => {
-  res.status(404);
-  // res.send(`Request ${res.path} not exist`);
-  res.render("index", { data: res.statusCode + " not found " + res.path });
-});
+// self write 404 handling (not use because if use here, it will affect other URL)
+// app.use((req, res, next) => {
+//   res.status(404);
+//   // res.send(`Request ${res.path} not exist`);
+//   res.render("index", { data: res.statusCode + " not found " + res.path });
+// });
 
 // Middleware 3: header handling
 app.use(function(req, res, next) {

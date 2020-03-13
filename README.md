@@ -3,20 +3,22 @@
 ## Steps of Express
 
 1. npm init
-2. npm install express --save (this save to common dependencies)
+2. npm install xxxxxxx --save (this save to common dependencies)
 3. npm install xxxxxxx --save-dev (this save todeveloping dependencies)
-4. Create: server.js  
+4. ..MongoDB\bin> mongod --dbpath ..MongoDB\data
+5. Create: server.js  
    3.1 create server + listen port  
    3.2 static resources handling + error URL handling when not has given static resources  
    3.3 client request data conversion
    3.4 URL -> data API handling
-5. Run: path> node server.js
+6. Run: path> node server.js or npm start
 
-## Steps of Mongoose
+## Things need to install
 
-1. npm install mongoose --save
+1. npm install express --save
+2. npm install mongoose --save
 
-## Basic Knowledge:
+## Basic Knowledge of request & response
 
 - Request
 - request.path: requested path name
@@ -38,7 +40,7 @@
 - eg: get all request information and save in request.body
 - method: app.use((req,res,next)=>{}) // use next to do the following things
 
-## Steps of MongoDB
+## Basic Knowledge of MongoDB
 
 1. Linux start  
    Path: which mongod  
@@ -51,7 +53,7 @@
    End : ctrl+C  
    End Progress: mongod --shutdown
 2. Client usage  
-   (DB > Collection > document)
+   (DB > Collection > document/field/index)
    DB client: mongo 127.0.0.1:27017  
    View tables: show dbs  
    View collections: show collections  
