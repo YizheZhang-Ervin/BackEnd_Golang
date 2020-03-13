@@ -1,0 +1,28 @@
+1) Directory:
+A    server.js
+     App
+B        app.js
+         models
+C            index.js
+D            user.js
+         services
+E            user-service.js
+         controllers
+F            user-controller.js
+         routes
+G            index.js
+H            user-route.js
+         config
+I            config.js
+
+2) Entrance: 
+server.js
+
+3) Sequence:
+A use B
+B use C/G/I
+C use D
+G use H
+H use F
+F use E
+E use C
