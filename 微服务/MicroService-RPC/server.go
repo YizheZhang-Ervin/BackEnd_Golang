@@ -5,7 +5,7 @@ import (
 	"log"
 
 	pb "github.com/micro/examples/helloworld/proto"
-	"github.com/micro/go-micro/v2"
+	micro "github.com/micro/go-micro/v2"
 )
 
 type Greeter struct{}

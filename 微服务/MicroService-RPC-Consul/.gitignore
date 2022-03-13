@@ -1,0 +1,4 @@
+*.DS_Store
+base/rpc/*
+*/go.sum
+*.idea
