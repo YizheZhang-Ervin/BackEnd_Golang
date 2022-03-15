@@ -12,7 +12,6 @@
 
 ## 爬虫
 - Gocolly
-- 分布式爬虫
 
 ## 区块链
 - naivechain
