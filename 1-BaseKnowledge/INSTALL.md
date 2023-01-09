@@ -13,13 +13,15 @@ source ~/.bash_profile
 ```
 # 把go/bin配在PATH中
 
-# 其他环境变量
+# 其他环境变量(goproxy配了之后再装vscode插件)
 go env -w GOPATH=D:\GitRepository\TMPL_BackupPrograms\#Golang
 go env -w GOMODCACHE=D:\GitRepository\TMPL_BackupPrograms\#Golang\pkg\mod
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/
 或
 go env -w GOPROXY=https://goproxy.cn
+或
+go env -w GOPROXY=https://proxy.golang.com.cn,direct
 ```
 
 # GO目录
