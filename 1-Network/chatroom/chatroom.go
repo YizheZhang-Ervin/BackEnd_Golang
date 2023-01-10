@@ -110,6 +110,7 @@ func handler(conn net.Conn) {
 		//1. 查询当前所有的用户 who
 		//	a. 先判断接收的数据是不是who  ==> 长度&&字符串
 		userInput := string(buf[:cnt-1]) //这是用户输入的数据,最后一个是回车，我们去掉它
+		// netcat 127.0.0.1 8080 输入 \who
 		if len(userInput) == 4 && userInput == "\\who" {
 			//  b. 遍历allUsers这个map (key : userid  value: user本身)，将id和name拼接成一个字符串，返回给客户端
 			fmt.Println("用户即将查询所有用户信息!")
@@ -134,7 +135,7 @@ func handler(conn net.Conn) {
 
 			//将数据返回给查询的客户端
 			newUser.msg <- r
-
+			// netcat 127.0.0.1 8080 输入 \rename|xxx
 		} else if len(userInput) > 9 && userInput[:7] == "\\rename" {
 			//[:3]  // 0, 1, 2  ==> 左闭右开
 

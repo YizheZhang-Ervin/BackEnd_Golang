@@ -1,0 +1,14 @@
+{
+    "editor.formatOnSave": true,
+    "go.toolsManagement.autoUpdate": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "go.autocompleteUnimportedPackages": true,
+    "go.coverShowCounts": true,
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "gopls": {
+        "usePlaceholders": true, // add parameter placeholders when completing a function
+        "completeUnimported": true, // autocomplete unimported packages
+        "watchFileChanges": true, // watch file changes outside of the editor
+        "deepCompletion": true, // enable deep completion
+    }
+}
