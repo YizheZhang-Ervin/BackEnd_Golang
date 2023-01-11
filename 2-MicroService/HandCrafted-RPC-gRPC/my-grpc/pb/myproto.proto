@@ -1,0 +1,37 @@
+// 默认是 proto2
+syntax = "proto3";
+
+// 指定所在包包名
+package pb;
+
+// 定义枚举类型
+enum Week {
+    Monday = 0;   // 枚举值,必须从 0 开始.
+    Turesday = 1;
+}
+
+// 定义消息体
+message Student {
+    int32 age = 1;  // 可以不从1开始, 但是不能重复. -- 不能使用 19000 - 19999
+    string name = 2;
+    People p = 3;
+    repeated int32 score = 4;  // 数组
+    // 枚举
+    Week w = 5;
+    // 联合体
+    oneof data {
+        string teacher = 6;
+        string class = 7;
+    }
+}
+
+// 消息体可以嵌套
+message People {
+    int32 weight = 1;
+}
+
+// 添加 rpc 服务
+service bj38 {
+    rpc Say(People) returns (Student);
+}
+

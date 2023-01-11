@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pb;
+
+// 消息体  --- 一个package 中,不允许定义同名的消息体
+message Teacher {
+    int32 age = 1;
+    string name = 2;
+}
+
+// 定义 服务
+service SayName {
+    rpc SayHello (Teacher) returns (Teacher);
+}

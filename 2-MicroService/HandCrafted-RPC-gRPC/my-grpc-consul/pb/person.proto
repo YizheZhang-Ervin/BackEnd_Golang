@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package pb;
+
+message Person {
+    string name = 1;
+    int32 age = 2;
+}
+
+// 添加 rpc服务
+service hello {
+    rpc sayHello (Person) returns (Person);
+}
