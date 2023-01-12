@@ -1,0 +1,1 @@
+module bj38web/service/getCaptcha

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package go.micro.srv.getCaptcha;
+
+service GetCaptcha {
+	rpc Call(Request) returns (Response) {}
+}
+
+message Request {
+	string uuid = 1;
+}
+
+message Response {
+	// 使用切片存储图片信息, 用 json 序列化
+	bytes img = 1;
+}
+
