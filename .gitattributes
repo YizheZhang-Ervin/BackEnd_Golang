@@ -1,0 +1,11 @@
+*.md linguist-language=golang 
+*.xml linguist-language=golang 
+*.yml linguist-language=golang 
+*.properties linguist-language=golang 
+*.json linguist-language=golang 
+*.conf linguist-language=golang 
+*.java linguist-language=golang
+*.sh linguist-language=golang 
+*.html linguist-language=golang
+*.css linguist-language=golang 
+*.js linguist-language=golang 
