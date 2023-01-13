@@ -2,7 +2,7 @@ package main
 
 import "github.com/hashicorp/consul/api"
 
-func main()  {
+func main() {
 	// 1. 初始化 consul 配置
 	consuConfig := api.DefaultConfig()
 
@@ -10,5 +10,5 @@ func main()  {
 	consulClient, _ := api.NewClient(consuConfig)
 
 	// 3. 注销服务
-	consulClient.Agent().ServiceDeregister("bj38")
+	consulClient.Agent().ServiceDeregister("my-grpc-consul")
 }

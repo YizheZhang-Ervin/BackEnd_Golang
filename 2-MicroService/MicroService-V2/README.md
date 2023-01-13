@@ -36,7 +36,15 @@ protoc-gen-micrp生成micro相关代码
 # consul
 ```
 consul -h
-consul agent -dev
+consul agent 
+    -bind地址,-http-port端口,-client客户端,-config-dir存服务信息,
+    -data-dir存机器信息,-dev开发模式,-node服务发现名,-rejoin加入,-server服务端,-ui页面
+consul members 集群成员
+consul info 信息
+consul leave 优雅关闭
+注册服务/etc/consul.d/XX.json里面{service:{name,tags,port}}
+查询服务ip:port/v1/catalog/service/xx
+健康检查/etc/cnsul.d/xx.json里面{service:{name,tags,address,port,check:{id,name,http,interval,timeout}}}
 ```
 
 # TODO修改代码

@@ -5,9 +5,10 @@ import (
 	"fmt"
 	"strconv"
 
+	"my-grpc-consul/pb"
+
 	"github.com/hashicorp/consul/api"
 	"google.golang.org/grpc"
-	"my-grpc-consul/pb"
 )
 
 func main() {
@@ -18,10 +19,10 @@ func main() {
 	consulClient, err := api.NewClient(consulConfig)
 
 	// 服务发现. 从consuL上, 获取健康的服务
-	services, _, err := consulClient.Health().Service("grpc And Consul", "grcp", true, nil)
+	services, _, err := consulClient.Health().Service("grpc And Consul", "grpc", true, nil)
 
 	// 简单的负载均衡.
-
+	// strconv.Itoa()整型转字符串，string()如果是数字则会当成ascii转字符
 	addr := services[0].Service.Address + ":" + strconv.Itoa(services[0].Service.Port)
 
 	//////////////////////以下为 grpc 服务远程调用//////////////////////////////

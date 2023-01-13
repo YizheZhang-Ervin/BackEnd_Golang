@@ -1,14 +1,40 @@
 # BackEnd_Golang
 
-## Golang基础
-- knowledges
+## 基础
+- base1.0
+- base2.0
 - moduledemo
 
-## Golang并发
+## 并发编程
+- V1-MIT
+  - Mutex (互斥锁/读写锁)
+  - NewCond
+  - WaitGroup
+  - Sleep
+  - Channel
+- V2
 
-## Golang网络编程
+## 网络编程
+- json
+- socket
+- http
+- chatroom
 
-## Golang图形界面
+## 区块链
+- naivechain
+- gochain
+
+## 图形界面
+- Fyne
+
+## 微服务
+- V1
+  - GoMicro+RPC
+  - GoMicro+RPC+Consul
+  - GoMicro+Gin+Consul
+  - GoMicro+K8S
+  - GoMicro+AllType
+- V2
 
 ## 爬虫
 - Gocolly
@@ -16,16 +42,3 @@
 ## Web框架
 - Beego
 - Gin
-  - Demo
-  - DemoSimple
-
-## 微服务
-- GoMicro+RPC
-- GoMicro+RPC+Consul
-- GoMicro+Gin+Consul
-- GoMicro+K8S
-- GoMicro+AllType
-
-## 区块链
-- naivechain
-- gochain

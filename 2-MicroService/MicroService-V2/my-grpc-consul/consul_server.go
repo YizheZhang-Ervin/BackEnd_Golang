@@ -15,7 +15,7 @@ import (
 type Children struct {
 }
 
-// 绑定类方法, 实现借口
+// 绑定类方法, 实现接口
 func (this *Children) SayHello(ctx context.Context, p *pb.Person) (*pb.Person, error) {
 	p.Name = "hello  " + p.Name
 	return p, nil
@@ -34,8 +34,8 @@ func main() {
 	}
 	// 3. 告诉consul, 即将注册的服务的配置信息
 	reg := api.AgentServiceRegistration{
-		ID:      "bj38",
-		Tags:    []string{"grcp", "consul"},
+		ID:      "my-grpc-consul",
+		Tags:    []string{"grpc", "consul"},
 		Name:    "grpc And Consul",
 		Address: "127.0.0.1",
 		Port:    8800,
