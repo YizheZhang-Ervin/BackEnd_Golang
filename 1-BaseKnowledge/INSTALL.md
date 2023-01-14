@@ -20,8 +20,6 @@ go env -w GO111MODULE=on
 go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/
 或
 go env -w GOPROXY=https://goproxy.cn
-或
-go env -w GOPROXY=https://proxy.golang.com.cn,direct
 ```
 
 # GO目录

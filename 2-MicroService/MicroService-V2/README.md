@@ -1,4 +1,22 @@
-# Protobuf
+# Go 微服务
+```
+# RPC
+- my-rpc
+- my-grpc
+- my-grpc-consul
+
+# GoMicro
+- my-gomicro-server
+- my-gomicro-client
+- my-gomicro-gin
+- my-gomicro-gin-gorm
+
+# Example
+- my-microservice1
+- my-microservice2
+```
+
+# 1. Protobuf
 ```
 # 编译protobuf
 protoc --go_out=./ *.proto 会生成xx.pb.go
@@ -7,7 +25,7 @@ protoc --go_out=./ *.proto 会生成xx.pb.go
 protoc --go_out=plugins=grpc:./ *.proto
 ```
 
-# grpc
+# 2. grpc
 ```
 # 安装
 go get -u -v google.golang.org/grpc
@@ -17,7 +35,7 @@ git clone 依赖再go install
 unzip离线包再go install
 ```
 
-# module,import,folder,package
+# 3. module,import,folder,package
 ```
 module模块
 import 文件绝对路径
@@ -25,7 +43,7 @@ folder一般和package同名
 package main入口
 ```
 
-# 微服务
+# 4. 微服务
 ```
 go-micro核心库
 micro运行环境&命令&创建微服务空项目
@@ -33,7 +51,7 @@ go-plugins插件
 protoc-gen-micrp生成micro相关代码
 ```
 
-# consul
+# 5. consul
 ```
 consul -h
 consul agent 
@@ -47,11 +65,77 @@ consul leave 优雅关闭
 健康检查/etc/cnsul.d/xx.json里面{service:{name,tags,address,port,check:{id,name,http,interval,timeout}}}
 ```
 
+# 6. Go-Micro
+## 通用
+```
+# protobuf
+https://github.com/protocolbuffers/protobuf/releases/download/v21.12/protoc-21.12-linux-x86_64.zip
+
+# make(mingw)
+https://osdn.dl.osdn.net/mingw/68260/mingw-get-setup.exe
+
+# protoc的micro插件
+go get -u github.com/golang/protobuf/proto
+go get -u github.com/golang/protobuf/protoc-gen-go
+go get github.com/micro/micro/v3/cmd/protoc-gen-micro
+```
+
+## V1
+```
+# 安装
+go get -u -v github.com/micro/go-micro
+go get -u -v github.com/micro/micro
+或
+docker pull microhq/micro
+
+# 命令
+micro new --namespace包名 --type微服务类型(api/fnc/srv/web) --fqdn服务正式完整定义 --alias别名
+如micro new --type srv xxName
+使用Makefile：make proto
+```
+## V2
+```
+# 安装(go要1.15以下)
+go install github.com/micro/micro/v2
+
+# 命令
+micro new --type service xxName
+micro new --type web xxName
+```
+
+## V3
+```
+# 安装
+go install github.com/micro/micro/v3@latest 或 docker pull ghcr.io/micro/micro:latest
+
+# 命令
+micro new xx
+micro web xx
+make proto
+micro server
+sudo docker run -p 8080:8080 -p 8081:8081 ghcr.io/micro/micro:latest server
+micro login # admin-micro
+```
+
+## V4
+```
+# 安装
+go install github.com/go-micro/cli/cmd/go-micro@latest
+
+# 命令
+go-micro new service xx
+go-micro new client xx
+```
+
+# 7. http概念
+```
+路由器资源分发
+路由请求分析：service.HandleFunc("/xx",handler.xx)
+go的web框架:gin,beego,echo,iris
+```
+
 # TODO修改代码
 ```
-gomicro-client 源于test77
-gomicro-server 源于test66
-gomicro-gin 源于test66web
 gomicro-gin-gorm 源于web
 microservice1 源于bj38web
 microservice2 源于ihomebj5q
