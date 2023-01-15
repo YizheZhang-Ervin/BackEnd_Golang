@@ -1,3 +1,5 @@
+// 模板
+
 // 默认是 proto2
 syntax = "proto3";
 
@@ -31,7 +33,7 @@ message People {
 }
 
 // 添加 rpc 服务
-service bj38 {
+service doSth {
     rpc Say(People) returns (Student);
 }
 

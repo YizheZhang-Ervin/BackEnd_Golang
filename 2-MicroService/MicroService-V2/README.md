@@ -8,11 +8,17 @@
 # GoMicro
 - my-gomicro-server
 - my-gomicro-client
+
+# GoMicro & Gin
 - my-gomicro-gin
 - my-gomicro-gin-gorm
 
 # Example
 - my-microservice1
+    - web 客户端
+    - service 微服务
+        - getcaptcha 图片验证码
+        - user 用户+短信验证码
 - my-microservice2
 ```
 
@@ -129,14 +135,30 @@ go-micro new client xx
 
 # 7. http概念
 ```
+# 概念
 路由器资源分发
 路由请求分析：service.HandleFunc("/xx",handler.xx)
 go的web框架:gin,beego,echo,iris
+
+# Gin框架
+路径参数ctx.Param(xx)
+问号查询参数ctx.Query(xx)或ctx.DefaultQuery(xx,defaultVal)
 ```
 
-# TODO修改代码
+# 8. redis
 ```
-gomicro-gin-gorm 源于web
-microservice1 源于bj38web
-microservice2 源于ihomebj5q
+# 服务启动
+/etc/redis/redis.conf改bind地址
+port：6379
+redis-server /etc/redis/redis.conf
+
+# 客户端使用
+redis-cli -h xx -p xx
+keys *
+flushall
+set key value
+get key
+
+# go编程
+redigo：连库、操作库、回复助手(把返回值转为特定类型)
 ```
