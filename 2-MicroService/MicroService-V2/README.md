@@ -141,8 +141,14 @@ go-micro new client xx
 go的web框架:gin,beego,echo,iris
 
 # Gin框架
-路径参数ctx.Param(xx)
-问号查询参数ctx.Query(xx)或ctx.DefaultQuery(xx,defaultVal)
+路径参数: ctx.Param(xx)
+问号查询参数: ctx.Query(xx)或ctx.DefaultQuery(xx,defaultVal)
+表单数据: ctx.PostForm(xx)或ctx.DefaultPostForm(xx,defaultVal)
+请求体: 
+    ctx.Bind()或ctx.BindJSON(&body)
+    或ctx.GetRawData()及json.Unmarshal(bytes,&jsonMap)
+    或ioutil.ReadAll(ctx.Request.Body)及json.Unmarshal(bytes,&jsonMap)
+    或json.NewDecoder(ctx.Request.Body).Decode(&jsonMap)
 ```
 
 # 8. redis
