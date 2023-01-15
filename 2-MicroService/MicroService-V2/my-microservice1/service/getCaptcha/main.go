@@ -3,12 +3,12 @@ package main
 import (
 	"my-microservice1/service/getCaptcha/handler"
 
-	"github.com/micro/go-micro"
-	"github.com/micro/go-micro/util/log"
+	"github.com/micro/go-micro/v2"
+	log "github.com/micro/go-micro/v2/logger"
 
 	getCaptcha "my-microservice1/service/getCaptcha/proto/getCaptcha"
 
-	"github.com/micro/go-micro/registry/consul"
+	"github.com/go-micro/plugins/v2/registry/consul"
 )
 
 func main() {

@@ -3,13 +3,13 @@ package main
 import (
 	"my-microservice1/service/user/handler"
 
-	"github.com/micro/go-micro"
-	"github.com/micro/go-micro/util/log"
+	"github.com/micro/go-micro/v2"
+	log "github.com/micro/go-micro/v2/logger"
 
 	"my-microservice1/service/user/model"
 	user "my-microservice1/service/user/proto/user"
 
-	"github.com/micro/go-micro/registry/consul"
+	"github.com/go-micro/plugins/v2/registry/consul"
 )
 
 func main() {

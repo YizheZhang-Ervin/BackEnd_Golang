@@ -13,6 +13,15 @@
   - Sleep
   - Channel
 - V2
+  - channel
+  - routine channel
+  - defer + panic
+  - lock (mutex)
+  - Producer + Consumer (channel)
+  - scheduleTask (ticker+sleep)
+  - select
+  - taskQueue (WaitGroup+Ticker)
+  - timer (timer)
 
 ## 网络编程
 - json
@@ -35,7 +44,16 @@
   - GoMicro+K8S
   - GoMicro+AllType
 - V2
-
+  - rpc
+  - grpc
+  - grpc + consul
+  - my-gomicro-server
+  - my-gomicro-client
+  - my-gomicro-gin
+  - my-gomicro-gin-gorm
+  - my-microservice1
+  - my-microservice2
+  
 ## 爬虫
 - Gocolly
 

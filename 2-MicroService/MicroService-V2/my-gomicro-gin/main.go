@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	mygomicrogin "my-gomicro-server/proto/my-gomicro-server"
+	mygomicrogin "my-gomicro-gin/proto/my-gomicro-server"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-micro/plugins/v2/registry/consul"

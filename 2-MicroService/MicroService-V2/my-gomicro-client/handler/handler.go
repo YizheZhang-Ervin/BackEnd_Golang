@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	mygomicroclient "my-gomicro-server/proto/my-gomicro-server"
+	mygomicroclient "my-gomicro-client/proto/my-gomicro-server"
 
 	"github.com/micro/go-micro/v2/client"
 )

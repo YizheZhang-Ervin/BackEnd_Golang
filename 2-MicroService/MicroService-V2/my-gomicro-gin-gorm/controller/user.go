@@ -11,8 +11,8 @@ import (
 
 	"github.com/afocus/captcha"
 	"github.com/gin-gonic/gin"
-	"github.com/micro/go-micro"
-	"github.com/micro/go-micro/registry/consul"
+	"github.com/go-micro/plugins/v2/registry/consul"
+	"github.com/micro/go-micro/v2"
 
 	userMicro "my-gomicro-gin-gorm/web/proto/user" // 给包起别名
 )
