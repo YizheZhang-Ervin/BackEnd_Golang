@@ -8,14 +8,13 @@
 # GoMicro
 - my-gomicro-server
 - my-gomicro-client
-
-# GoMicro & Gin
 - my-gomicro-gin
-- my-gomicro-gin-gorm
+    - Gin
 
 # Example
 - my-microservice1
     - web 客户端
+        - gorm
     - service 微服务
         - getcaptcha 图片验证码
         - user 用户+短信验证码
@@ -167,4 +166,9 @@ get key
 
 # go编程
 redigo：连库、操作库、回复助手(把返回值转为特定类型)
+```
+
+# 9. 综合
+```
+go micro、gorm、redigo、gin、熔断器hystrix、网关http api、consul、etcd、限流rate、jwt、go-kit、cookie&session、nginx
 ```

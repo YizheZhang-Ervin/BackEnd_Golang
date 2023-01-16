@@ -26,10 +26,10 @@ func LoginFilter() gin.HandlerFunc {
 // 添加gin框架开发3步骤
 func main() {
 
-	// 初始化 Redis 链接池
+	// 初始化 ModelFunc.go里的 Redis 链接池
 	model.InitRedis()
 
-	// 初始化 MySQL 链接池
+	// 初始化 Model.go里的 MySQL 链接池
 	model.InitDb()
 
 	// 初始化路由

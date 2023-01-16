@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"github.com/micro/go-micro/registry/consul"
-	"github.com/micro/go-micro"
+	"github.com/go-micro/plugins/v2/registry/consul"
+	"github.com/micro/go-micro/v2"
 )
 
 // 初始化micro

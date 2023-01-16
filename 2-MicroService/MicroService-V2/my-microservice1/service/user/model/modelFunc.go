@@ -1,23 +1,24 @@
 package model
 
 import (
-	"github.com/gomodule/redigo/redis"
-	"fmt"
-	"github.com/pkg/errors"
 	"crypto/md5"
 	"encoding/hex"
+	"fmt"
+
+	"github.com/gomodule/redigo/redis"
+	"github.com/pkg/errors"
 )
 
 // 创建全局redis 连接池 句柄
 var RedisPool redis.Pool
 
 // 创建函数, 初始化Redis连接池
-func InitRedis()  {
+func InitRedis() {
 	RedisPool = redis.Pool{
-		MaxIdle:20,
-		MaxActive:50,
-		MaxConnLifetime:60 * 5,
-		IdleTimeout:60,
+		MaxIdle:         20,
+		MaxActive:       50,
+		MaxConnLifetime: 60 * 5,
+		IdleTimeout:     60,
 		Dial: func() (redis.Conn, error) {
 			return redis.Dial("tcp", "192.168.6.108:6379")
 		},
@@ -27,11 +28,11 @@ func InitRedis()  {
 // 校验图片验证码
 func CheckImgCode(uuid, imgCode string) bool {
 	// 链接 redis --- 从链接池中获取链接
-/*	conn, err := redis.Dial("tcp", "192.168.6.108:6379")
-	if err != nil {
-		fmt.Println("redis.Dial err:", err)
-		return false
-	}*/
+	/*	conn, err := redis.Dial("tcp", "192.168.6.108:6379")
+		if err != nil {
+			fmt.Println("redis.Dial err:", err)
+			return false
+		}*/
 	conn := RedisPool.Get()
 	defer conn.Close()
 
@@ -53,7 +54,7 @@ func SaveSmsCode(phone, code string) error {
 	defer conn.Close()
 
 	// 存储短信验证码到 redis 中
-	_, err := conn.Do("setex", phone+"_code", 60 * 3, code)
+	_, err := conn.Do("setex", phone+"_code", 60*3, code)
 
 	return err
 }
@@ -80,17 +81,15 @@ func CheckSmsCode(phone, code string) error {
 // 注册用户信息,写 MySQL 数据库.
 func RegisterUser(mobile, pwd string) error {
 	var user User
-	user.Name = mobile		// 默认使用手机号作为用户名
+	user.Name = mobile // 默认使用手机号作为用户名
 
 	// 使用 md5 对 pwd 加密
-	m5 := md5.New()			// 初始md5对象
-	m5.Write([]byte(pwd))		// 将 pwd 写入缓冲区
-	pwd_hash := hex.EncodeToString(m5.Sum(nil))		// 不使用额外的秘钥
+	m5 := md5.New()                             // 初始md5对象
+	m5.Write([]byte(pwd))                       // 将 pwd 写入缓冲区
+	pwd_hash := hex.EncodeToString(m5.Sum(nil)) // 不使用额外的秘钥
 
 	user.Password_hash = pwd_hash
 
 	// 插入数据到MySQL
 	return GlobalConn.Create(&user).Error
 }
-
-
