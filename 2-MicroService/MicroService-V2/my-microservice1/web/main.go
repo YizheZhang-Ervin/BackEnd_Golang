@@ -38,7 +38,7 @@ func main() {
 	// 初始化容器
 	store, _ := redis.NewStore(10, "tcp", "192.168.6.108:6379", "", []byte("my-microservice1"))
 
-	// 使用容器
+	// 使用容器，中间件会对后面的路由都生效
 	router.Use(sessions.Sessions("mysession", store)) // 使用中间件! -- 指定容器.
 
 	router.Static("/home", "view")

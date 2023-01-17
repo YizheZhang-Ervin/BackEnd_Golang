@@ -70,7 +70,7 @@ consul leave 优雅关闭
 健康检查/etc/cnsul.d/xx.json里面{service:{name,tags,address,port,check:{id,name,http,interval,timeout}}}
 ```
 
-# 6. Go-Micro
+# 6. Go Micro
 ## 通用
 ```
 # protobuf
@@ -168,7 +168,25 @@ get key
 redigo：连库、操作库、回复助手(把返回值转为特定类型)
 ```
 
-# 9. 综合
+# 9. Cookie & Session
 ```
-go micro、gorm、redigo、gin、熔断器hystrix、网关http api、consul、etcd、限流rate、jwt、go-kit、cookie&session、nginx
+cookie客户端
+session服务端（k:sessionId，v:sessionValue）
+```
+
+# 10. 中间件
+```
+对之后的路由都生效
+承上启下用于两个模块之间的功能软件(路由-中间件-控制器)
+gin中间件：gin.HandlerFunc
+- ctx.next跳过当前中间件剩余内容执行下一个中间件。前面的顺序调用，后面的逆序调用
+- abort只执行当前中间件，阻止执行下一个中间件
+- return终止执行当前中间件剩余内容，执行下一个中间件
+```
+
+# 11. 综合
+```
+go micro、gorm+validate、redigo、gin、熔断器hystrix
+网关http api、网关grpc、consul、etcd、限流rate、jwt、go-kit
+cookie&session、nginx、micro web、micro registry
 ```

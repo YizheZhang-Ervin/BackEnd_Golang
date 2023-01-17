@@ -9,13 +9,13 @@ import (
 	"my-microservice1/web/utils"
 	"net/http"
 
+	"microservice1/web/model"
+	userMicro "microservice1/web/proto/user" // 给包起别名
+
 	"github.com/afocus/captcha"
 	"github.com/gin-gonic/gin"
 	"github.com/go-micro/plugins/v2/registry/consul"
-	"github.com/micro/go-micro/v2"
-
-	"microservice1/web/model"
-	userMicro "microservice1/web/proto/user" // 给包起别名
+	"go-micro.dev/v4"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gomodule/redigo/redis"
@@ -33,6 +33,7 @@ func GetSession(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, resp)
 }
 */
+
 // 获取 session 信息
 func GetSession(ctx *gin.Context) {
 	resp := make(map[string]interface{})
@@ -316,6 +317,12 @@ func PutUserInfo(ctx *gin.Context) {
 func PostAvatar(ctx *gin.Context) {
 	// 获取图片文件, 静态文件对象
 	file, _ := ctx.FormFile("avatar")
+	// 多文件
+	// form, _ := ctx.MultipartForm()
+	// files := form.File["upload[]"]
+	// for _, file := range files {
+	// 	fmt.Println(file.Filename)
+	// }
 
 	// 上传文件到项目中
 	err := ctx.SaveUploadedFile(file, "test/"+file.Filename)

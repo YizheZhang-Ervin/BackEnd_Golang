@@ -1,20 +1,21 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"fmt"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 // 创建中间件
-func Test1(ctx *gin.Context)  {
+func Test1(ctx *gin.Context) {
 	fmt.Println("1111")
 
 	t := time.Now()
 
-	ctx.Next()
+	ctx.Next() // 调下一个中间件
 
-	fmt.Println(time.Now().Sub(t))
+	fmt.Println(time.Now().Sub(t)) // 用于测试消耗时间
 }
 
 // 创建 另外一种格式的中间件.
@@ -27,7 +28,7 @@ func Test2() gin.HandlerFunc {
 		fmt.Println("5555")
 	}
 }
-func main()  {
+func main() {
 	router := gin.Default()
 
 	// 使用中间件
