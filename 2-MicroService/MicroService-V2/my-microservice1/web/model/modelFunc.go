@@ -1,10 +1,11 @@
 package model
 
 import (
-	"github.com/gomodule/redigo/redis"
-	"fmt"
 	"crypto/md5"
 	"encoding/hex"
+	"fmt"
+
+	"github.com/gomodule/redigo/redis"
 )
 
 // 创建全局redis 连接池 句柄
@@ -86,4 +87,9 @@ func GetUserInfo(userName string) (User, error) {
 func UpdateUserName(newName, oldName string) error {
 	// update user set name = 'itcast' where name = 旧用户名
 	return GlobalConn.Model(new(User)).Where("name = ?", oldName).Update("name", newName).Error
+}
+
+// 更新用户头像
+func UpdateAvatar(userName, avatar string) error {
+	return GlobalConn.Model(new(User)).Where("name=?", userName).Update("avatar_url", avatar).Error
 }

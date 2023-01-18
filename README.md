@@ -50,7 +50,6 @@
   - my-gomicro-server
   - my-gomicro-client
   - my-gomicro-gin
-  - my-gomicro-gin-gorm
   - my-microservice1
   - my-microservice2
   

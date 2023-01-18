@@ -14,11 +14,17 @@
 # Example
 - my-microservice1
     - web 客户端
-        - gorm
+        - mysql + gorm
+        - redis + redigo
+        - cookie & session
+        - fastDFS + fdfd_client + fastdfs-nginx-module + nginx
+        - consul
     - service 微服务
         - getcaptcha 图片验证码
         - user 用户+短信验证码
 - my-microservice2
+    - 功能：用户、房屋、订单
+    - 启动：redis、fastdfs(trackerd/storaged)、nginx、consul、微服务
 ```
 
 # 1. Protobuf
@@ -184,9 +190,28 @@ gin中间件：gin.HandlerFunc
 - return终止执行当前中间件剩余内容，执行下一个中间件
 ```
 
-# 11. 综合
+# 11. FastDFS分布式文件存储系统
 ```
-go micro、gorm+validate、redigo、gin、熔断器hystrix
-网关http api、网关grpc、consul、etcd、限流rate、jwt、go-kit
-cookie&session、nginx、micro web、micro registry
+客户端-监听器(tracker)-存储器(多个storage)
+- 监听服务器定时查看存储服务器状态
+- client访问监听服务器获取可用的存储服务器地址
+- client根据地址访问存储服务器
+- 存储服务器存储文件返回凭证
+fastDFS不提供图片展示，用nginx展示
+```
+
+# 12. 综合
+```
+微服务框架：go micro、micro web、micro registry、go kit
+web框架：gin、swagger
+web组件：cookie&session、jwt、socket
+数据库：mysql + gorm + validate
+缓存：redis + redigo
+消息队列：RabbitMQ
+文件存储：fastDFS + fdfd_client + fastdfs-nginx-module + nginx、ceph、OSS
+网关：http api、grpc
+服务发现：consul、etcd
+限流熔断：rate、hystrix
+弹性搜索：elk
+容器化：docker、k8s
 ```

@@ -8,6 +8,7 @@ import (
 	getCaptcha "microservice1/web/proto/getCaptcha" // 给包起别名
 	"my-microservice1/web/utils"
 	"net/http"
+	"path"
 
 	"microservice1/web/model"
 	userMicro "microservice1/web/proto/user" // 给包起别名
@@ -19,6 +20,8 @@ import (
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gomodule/redigo/redis"
+
+	"github.com/tedcy/fdfs_client"
 )
 
 /*
@@ -271,7 +274,9 @@ func GetUserInfo(ctx *gin.Context) {
 	temp["mobile"] = user.Mobile
 	temp["real_name"] = user.Real_name
 	temp["id_card"] = user.Id_card
-	temp["avatar_url"] = user.Avatar_url
+	// temp["avatar_url"] = user.Avatar_url
+	// 用fastDFS时
+	temp["avatar_url"] = "http://192.168.6.108:8888/" + user.Avatar_url
 
 	resp["data"] = temp
 }
@@ -315,7 +320,7 @@ func PutUserInfo(ctx *gin.Context) {
 
 // 上传头像
 func PostAvatar(ctx *gin.Context) {
-	// 获取图片文件, 静态文件对象
+	// 单文件：获取图片文件, 静态文件对象
 	file, _ := ctx.FormFile("avatar")
 	// 多文件
 	// form, _ := ctx.MultipartForm()
@@ -324,7 +329,34 @@ func PostAvatar(ctx *gin.Context) {
 	// 	fmt.Println(file.Filename)
 	// }
 
-	// 上传文件到项目中
-	err := ctx.SaveUploadedFile(file, "test/"+file.Filename)
-	fmt.Println(err)
+	// 上传文件到项目中(存本地)
+	//err := ctx.SaveUploadedFile(file, "test/"+file.Filename)
+	//fmt.Println(err)
+
+	// 用fastdfs
+	clt, _ := fdfs_client.NewClientWithConfig("/etc/fdfs/client.conf")
+	// 只读打开
+	f, _ := file.Open()
+	// 按文件实际大小创切片
+	buf := make([]byte, file.Size)
+	// 读文件到缓存
+	f.Read(buf)
+	// 获取后缀
+	fileExt := path.Ext(file.Filename)
+	// 按字节流上传图片内容
+	remoteId, _ := clt.UploadByBuffer(buf, fileExt[1:])
+	// 获取用户名
+	userName := sessions.Default(ctx).Get("userName")
+	// 更新头像
+	model.UpdateAvatar(userName.(string), remoteId)
+
+	resp := make(map[string]interface{})
+	resp["errno"] = utils.RECODE_OK
+	resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
+
+	temp := make(map[string]interface{})
+	// nginx地址
+	temp["avatar_url"] = "http://192.168.6.108:8888/" + remoteId
+	resp["data"] = temp
+	ctx.JSON(http.StatusOK, resp)
 }
