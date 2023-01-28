@@ -52,7 +52,12 @@
   - my-gomicro-gin
   - my-microservice1
   - my-microservice2
-  
+- V3
+  - Go Etcd
+  - Go Kit
+  - Go Micro
+  - Go Proxy
+
 ## 爬虫
 - Gocolly
 

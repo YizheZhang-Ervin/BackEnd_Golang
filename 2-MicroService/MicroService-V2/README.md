@@ -204,14 +204,20 @@ fastDFS不提供图片展示，用nginx展示
 ```
 微服务框架：go micro、micro web、micro registry、go kit
 web框架：gin、swagger
-web组件：cookie&session、jwt、socket
+web组件：cookie&session、socket
+身份认证：jwt
 数据库：mysql + gorm + validate
 缓存：redis + redigo
 消息队列：RabbitMQ
 文件存储：fastDFS + fdfd_client + fastdfs-nginx-module + nginx、ceph、OSS
 网关：http api、grpc
 服务发现：consul、etcd
-限流熔断：rate、hystrix
+限流/降级/熔断：hystrix
 弹性搜索：elk
 容器化：docker、k8s
+命令行参数：flag
+中断：signal
+负载均衡：rate
+全局异常
+自定义日志
 ```
