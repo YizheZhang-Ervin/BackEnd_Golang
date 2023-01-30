@@ -28,6 +28,7 @@ func BuildRegisterPath(server Server) string {
 	return fmt.Sprintf("%s%s", BuildPrefix(server), server.Addr)
 }
 
+// 把value值反序列化到server实例中
 func ParseValue(value []byte) (Server, error) {
 	server := Server{}
 	if err := json.Unmarshal(value, &server); err != nil {

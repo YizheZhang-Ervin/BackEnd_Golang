@@ -1,36 +1,22 @@
-package repository
+package dao
 
 import (
-	"fmt"
+	"context"
+	"time"
+
 	"github.com/gin-gonic/gin"
-	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
-	"strings"
-	"time"
-	"user/pkg/util"
+	"gorm.io/plugin/dbresolver"
 )
 
-var DB *gorm.DB
+var (
+	_db *gorm.DB
+)
 
-func InitDB() {
-	host := viper.GetString("mysql.host")
-	port := viper.GetString("mysql.port")
-	database := viper.GetString("mysql.database")
-	username := viper.GetString("mysql.username")
-	password := viper.GetString("mysql.password")
-	charset := viper.GetString("mysql.charset")
-	dsn := strings.Join([]string{username, ":", password, "@tcp(", host, ":", port, ")/", database, "?charset=" + charset + "&parseTime=true"}, "")
-	err := Database(dsn)
-	if err != nil {
-		fmt.Println(err)
-		util.LogrusObj.Error(err)
-	}
-}
-
-func Database(connString string) error {
+func Database(connRead, connWrite string) {
 	var ormLogger logger.Interface
 	if gin.Mode() == "debug" {
 		ormLogger = logger.Default.LogMode(logger.Info)
@@ -38,7 +24,7 @@ func Database(connString string) error {
 		ormLogger = logger.Default
 	}
 	db, err := gorm.Open(mysql.New(mysql.Config{
-		DSN:                       connString, // DSN data source name
+		DSN:                       connRead, // DSN data source name
 		DefaultStringSize:         256,      // string 类型字段的默认长度
 		DisableDatetimePrecision:  true,     // 禁用 datetime 精度，MySQL 5.6 之前的数据库不支持
 		DontSupportRenameIndex:    true,     // 重命名索引时采用删除并新建的方式，MySQL 5.7 之前的数据库和 MariaDB 不支持重命名索引
@@ -57,7 +43,18 @@ func Database(connString string) error {
 	sqlDB.SetMaxIdleConns(20)  //设置连接池，空闲
 	sqlDB.SetMaxOpenConns(100) //打开
 	sqlDB.SetConnMaxLifetime(time.Second * 30)
-	DB = db
-	migration()
-	return err
+	_db = db
+	_ = _db.Use(dbresolver.
+		Register(dbresolver.Config{
+			// `db2` 作为 sources，`db3`、`db4` 作为 replicas
+			Sources:  []gorm.Dialector{mysql.Open(connRead)},                         // 写操作
+			Replicas: []gorm.Dialector{mysql.Open(connWrite), mysql.Open(connWrite)}, // 读操作
+			Policy:   dbresolver.RandomPolicy{},                                      // sources/replicas 负载均衡策略
+		}))
+	Migration()
+}
+
+func NewDBClient(ctx context.Context) *gorm.DB {
+	db := _db
+	return db.WithContext(ctx)
 }
