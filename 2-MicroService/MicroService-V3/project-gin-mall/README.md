@@ -3,7 +3,7 @@
 ## 一、概述
 ### 1. 技术
 - web框架 gin
-- 数据库 mysql + gorm读写分离 + dbresolver
+- 数据库 mysql + gorm + dbresolver读写分离
 - 缓存 redis (存储商品的浏览次数)
 - 鉴权 jwt
 - 加密 crypto
