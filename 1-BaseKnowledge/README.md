@@ -1,53 +1,39 @@
 # Golang
 
-# 0.命令
+## 0.GO目录
 ```
-# 1. 设置mod模式 & 国内源
-## 方法1
-SETX GO111MODULE on
-set GOPROXY=https://mirrors.aliyun.com/goproxy/
-
-## 方法2
-go env -w GO111MODULE=on
-go env -w GOPROXY=https://goproxy.cn,direct
-
-# 2. 下载依赖
-go get 依赖名
-
-# 3. 编译 & 运行
-## 初始化模块
-go mod init moduledemo
-
-## 拉取依赖
-go mod tidy
-
-## 编译当前系统可执行文件
-其他目录$ go build main
-moduledemo$ go build
-
-## win编译linux可执行文件
-set CGO_ENABLED=0
-set GOOS=linux 
-set GOARCH=amd64 
-moduledemo$ go build
-
-## linux编译win可执行文件
-moduledemo$ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build
-
-## 编译后运行
-moduledemo$ ./moduledemo.exe
-
-## 不编译直接运行
-moduledemo$ go run main.go
+Go 语言环境安装
+Go 语言结构
+Go 语言基础语法
+Go 语言数据类型
+Go 语言变量
+Go 语言常量
+Go 语言运算符
+Go 语言条件语句
+Go 语言循环语句
+Go 语言函数
+Go 语言变量作用域
+Go 语言数组
+Go 语言指针
+Go 语言结构体
+Go 语言切片(Slice)
+Go 语言范围(Range)
+Go 语言Map(集合)
+Go 语言递归函数
+Go 语言类型转换
+Go 语言接口
+Go 错误处理
+Go 并发
+Go 语言开发工具(vscode/goland/liteIDE/Eclipse)
 ```
 
-# 1.环境准备
+## 1.环境准备
 ```
 godep
 go mod
 ```
 
-# 2.基础
+## 2.基础
 ```
 变量常量(标识符、关键字、变量、常量)
 数据类型(基本数据类型、类型转换)
@@ -68,7 +54,7 @@ error接口(创建错误、错误结构体类型)
 单元测试 (基础[测试函数、基准测试、setup及teardown、示例函数]、网络测试、mysql&redis、mock接口、monkey打桩、goconvey、可测试的代码)
 ```
 
-# 3.库
+## 3.库
 ```
 fmt
 time
@@ -85,7 +71,7 @@ http/template
 三方gopsutil系统性能库
 ```
 
-# 4中间件
+## 4.中间件
 ```
 mysql (sqlx+GORM)
 redis
@@ -98,7 +84,7 @@ NSQ
 RabbitMQ
 ```
 
-# 5.web
+## 5.web
 ```
 template
 gin (JWT、源码、zap日志、路由、validator)
@@ -112,7 +98,7 @@ swagger
 部署
 ```
 
-# 6.其他
+## 6.其他
 ```
 JSON
 函数式选项模式

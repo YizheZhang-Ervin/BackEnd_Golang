@@ -6,9 +6,13 @@
     "go.coverShowCounts": true,
     "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
     "gopls": {
-        "usePlaceholders": true, // add parameter placeholders when completing a function
-        "completeUnimported": true, // autocomplete unimported packages
-        "watchFileChanges": true, // watch file changes outside of the editor
-        "deepCompletion": true, // enable deep completion
-    }
+        "usePlaceholders": true,
+        "completeUnimported": true,
+        "watchFileChanges": true,
+        "deepCompletion": true
+    },
+    "go.gocodePackageLookupMode": "go",
+    "go.gotoSymbol.includeImports": true,
+    "go.inferGopath": true,
+    "go.gotoSymbol.includeGoroot": true
 }

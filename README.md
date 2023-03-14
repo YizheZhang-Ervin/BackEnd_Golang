@@ -69,3 +69,4 @@
 
 ## 3-1 中间件
 - Elastic Search
+- Etcd
