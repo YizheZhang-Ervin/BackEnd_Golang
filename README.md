@@ -68,5 +68,11 @@
 - Gin
 
 ## 3-1 中间件
-- Elastic Search
+- ElasticSearch
 - Etcd
+- InfluxDB
+- Kafka
+- Minio
+- MongoDB
+- MySql
+- Redis
