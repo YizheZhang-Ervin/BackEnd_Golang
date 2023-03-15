@@ -1,4 +1,4 @@
-package main
+package myEtcd
 
 import (
 	"context"
@@ -10,7 +10,23 @@ import (
 	"go.etcd.io/etcd/clientv3"
 )
 
-// 入口
+// 错误处理
+func errorHandling(cli *clientv3.Client, ctx context.Context) {
+	_, err := cli.Put(ctx, "", "")
+	if err != nil {
+		switch err {
+		case context.Canceled:
+			log.Fatalf("ctx is canceled by another routine: %v", err)
+		case context.DeadlineExceeded:
+			log.Fatalf("ctx is attached with a deadline is exceeded: %v", err)
+		case rpctypes.ErrEmptyKey:
+			log.Fatalf("client-side error: %v", err)
+		default:
+			log.Fatalf("bad cluster endpoints, which are not etcd servers: %v", err)
+		}
+	}
+}
+
 func main() {
 	// 连接
 	cli, err := clientv3.New(clientv3.Config{
@@ -31,17 +47,6 @@ func main() {
 	cancel()
 	if err != nil {
 		fmt.Println("put to etcd failed,err:", err)
-		// 错误处理
-		switch err {
-			case context.Canceled:
-				log.Fatalf("ctx is canceled by another routine: %v", err)
-			case context.DeadlineExceeded:
-				log.Fatalf("ctx is attached with a deadline is exceeded: %v", err)
-			case rpctypes.ErrEmptyKey:
-				log.Fatalf("client-side error: %v", err)
-			default:
-				log.Fatalf("bad cluster endpoints, which are not etcd servers: %v", err)
-		}
 		return
 	}
 
@@ -66,4 +71,7 @@ func main() {
 			fmt.Printf("Type:%v key:%v value:%v\n", evt.Type, string(evt.Kv.Key), evt.Kv.Value)
 		}
 	}
+
+	// 错误处理
+	errorHandling(cli, ctx)
 }
