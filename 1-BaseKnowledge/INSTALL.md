@@ -14,6 +14,8 @@ source ~/.bash_profile
 2. 安装 - Windows
 ```
 # 把go/bin配在PATH中
+D:\softwares\golang18\bin
+D:\GoPathRepository\bin
 
 # 其他环境变量(goproxy配了之后再装vscode插件)
 go env -w GOPATH=D:\GoPathRepository (要和go mod路径不一样)
