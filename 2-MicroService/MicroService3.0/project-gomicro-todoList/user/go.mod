@@ -8,7 +8,7 @@ require (
 	github.com/jinzhu/gorm v1.9.16
 	github.com/micro/go-micro/v2 v2.9.1
 	github.com/stretchr/testify v1.7.0 // indirect
-	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
+	golang.org/x/crypto v0.1.0
 	google.golang.org/protobuf v1.22.0
 	gopkg.in/ini.v1 v1.66.2
 )
