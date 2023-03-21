@@ -37,13 +37,13 @@
 - Fyne
 
 ## 2-3 微服务
-- V1
+- 1.0
   - GoMicro+RPC
   - GoMicro+RPC+Consul
   - GoMicro+Gin+Consul
   - GoMicro+K8S
   - GoMicro+AllType
-- V2
+- 2.0
   - rpc
   - grpc
   - grpc + consul
@@ -52,13 +52,16 @@
   - my-gomicro-gin
   - my-microservice1
   - my-microservice2
-- V3
+- 3.0
   - Go Etcd
   - Go Kit
   - Go Micro
   - Go Proxy
   - GoMicro todolist
   - GRPC todolist
+- 4.0
+  - Go Micro V3
+  - Go Micro V4
 
 ## 2-4 爬虫
 - Gocolly
