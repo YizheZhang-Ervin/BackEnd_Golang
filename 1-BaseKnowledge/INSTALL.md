@@ -76,3 +76,15 @@ go install 依赖名
 go build
 go build xxPackage
 ```
+
+5. import
+```
+# import顺序
+- 查当前目录mod，import "xxMod/相对路径到package名"
+- 未找到，查上级目录mod
+- 未找到，查$GOPATH,$GOROOT
+
+# 引用包
+- 目录名==package名，package名.xxx
+- 目录名!=package名，package名.xxx
+```
