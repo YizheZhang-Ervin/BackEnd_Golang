@@ -79,3 +79,7 @@
 - MongoDB
 - MySql
 - Redis
+
+## 3-2 分布式系统
+- MapReduce
+- Raft
