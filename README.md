@@ -79,6 +79,7 @@
 - MongoDB
 - MySql
 - Redis
+- 各中间件operator【暂无】
 
 ## 3-2 分布式系统
 - MapReduce
