@@ -1,5 +1,7 @@
 {
     "editor.formatOnSave": true,
+    "go.useLanguageServer": true,
+    "go.docsTool": "gogetdoc",
     "go.toolsManagement.autoUpdate": true,
     "go.useCodeSnippetsOnFunctionSuggest": true,
     "go.autocompleteUnimportedPackages": true,
