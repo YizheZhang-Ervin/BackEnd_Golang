@@ -27,6 +27,7 @@ go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/ (或 set GOPROXY=https://g
 
 # VScode工具
 Ctrl+Shift+P 输入Go:Install/Update Tools
+安装gogetdoc
 配置settings.json (见vscode-settings.json)
 ```
 
