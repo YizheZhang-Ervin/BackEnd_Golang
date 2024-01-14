@@ -1,0 +1,4 @@
+MicroService:
+ Driver: 'dtm-driver-gozero' # name of the driver to handle register/discover
+ Target: 'etcd://localhost:2379/dtmservice' # register dtm server to this url
+ EndPoint: 'localhost:36790'
