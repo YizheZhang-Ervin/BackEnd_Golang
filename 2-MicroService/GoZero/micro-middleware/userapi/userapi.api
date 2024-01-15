@@ -1,0 +1,19 @@
+syntax = "v1"
+
+type Request {
+	Name string `path:"name,options=you|me"`
+}
+
+type Response {
+	Message string `json:"message"`
+}
+
+@server (
+	jwt: Auth
+	middleware: Example // 路由中间件声明
+)
+service userapi-api {
+	@handler UserapiHandler
+	get /from/:name (Request) returns (Response)
+}
+

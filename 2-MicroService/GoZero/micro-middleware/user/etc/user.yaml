@@ -1,0 +1,20 @@
+Name: user.rpc
+ListenOn: 127.0.0.1:8080
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: user.rpc
+Mysql:
+  DataSource: root:root@tcp(127.0.0.1:3309)/zero_mall?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+CacheRedis:
+  - Host: 127.0.0.1:6379
+    Type: node
+Prometheus:
+  Host: 127.0.0.1
+  Port: 9091
+  Path: /metrics
+Telemetry:
+  Name: user-rpc
+  Endpoint: http://localhost:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger

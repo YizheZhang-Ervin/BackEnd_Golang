@@ -1,4 +1,0 @@
-Prometheus:
-  Host: 127.0.0.1
-  Port: 9081
-  Path: /metrics

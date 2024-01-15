@@ -1,0 +1,20 @@
+Name: userapi-api
+Host: 0.0.0.0
+Port: 8888
+UserRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+Auth:
+  AccessSecret: "!@#$#@asdasds"
+  AccessExpire: 604800
+Prometheus:
+  Host: 127.0.0.1
+  Port: 9081
+  Path: /metrics
+Telemetry:
+  Name: user-api
+  Endpoint: http://localhost:14268/api/traces
+  Sampler: 1.0
+  Batcher: jaeger

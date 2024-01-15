@@ -1,0 +1,29 @@
+syntax = "v1"
+
+type Request {
+	Name string `path:"name,options=you|me"`
+}
+
+type Response {
+	Message string `json:"message"`
+}
+
+type (
+	OrderReq {
+		Id string `path:"id"`
+	}
+	OrderReply {
+		Id       string `json:"id"`
+		Name     string `json:"name"`
+		UserName string `json:"userName"`
+	}
+)
+
+service order-api {
+	@handler OrderHandler
+	get /from/:name (Request) returns (Response)
+
+	@handler GetOrderHandler
+	get /api/order/get/:id (OrderReq) returns (OrderReply)
+}
+

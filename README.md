@@ -54,7 +54,6 @@
   - my-microservice2
 - 3.0
   - Go Etcd
-  - Go Kit
   - Go Micro
   - Go Proxy
   - GoMicro todolist
@@ -62,6 +61,7 @@
 - 4.0
   - Go Micro V3
   - Go Micro V4
+- GoKit
 - GoZero
 
 ## 2-4 爬虫
