@@ -37,30 +37,7 @@
 - Fyne
 
 ## 2-3 微服务
-- 1.0
-  - GoMicro+RPC
-  - GoMicro+RPC+Consul
-  - GoMicro+Gin+Consul
-  - GoMicro+K8S
-  - GoMicro+AllType
-- 2.0
-  - rpc
-  - grpc
-  - grpc + consul
-  - my-gomicro-server
-  - my-gomicro-client
-  - my-gomicro-gin
-  - my-microservice1
-  - my-microservice2
-- 3.0
-  - Go Etcd
-  - Go Micro
-  - Go Proxy
-  - GoMicro todolist
-  - GRPC todolist
-- 4.0
-  - Go Micro V3
-  - Go Micro V4
+- GoMicro
 - GoKit
 - GoZero
 
