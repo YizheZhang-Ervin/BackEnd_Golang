@@ -1,5 +1,11 @@
 # GoKit Demo
 
+## Call
+```
+main注册：transport/service/middlewares
+main调用：transport→endpoint→middlewares→service
+```
+
 ## Commands
 ```
 # init
