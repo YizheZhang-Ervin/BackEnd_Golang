@@ -1,4 +1,4 @@
-package myetcd
+package middlewares
 
 import (
 	"context"
@@ -12,8 +12,8 @@ import (
 
 var cliPtr *clientv3.Client
 
-// 连接
-func Connect(connectStr string) {
+// ConnectEtcd 连接
+func ConnectEtcd(connectStr string) {
 	// 连接
 	cli, err := clientv3.New(clientv3.Config{
 		Endpoints:   []string{connectStr},
@@ -29,18 +29,19 @@ func Connect(connectStr string) {
 	cliPtr = cli
 }
 
-// 设值
+// SetValue 设值
 func SetValue(key string, value string) {
 	ctx, _ := context.WithTimeout(context.Background(), time.Second)
 	// cancel()
 	_, err := cliPtr.Put(ctx, key, value)
 	if err != nil {
-		fmt.Println("put from etcd failed:", err)
+		// fmt.Println("put from etcd failed:", err)
+		printError(err)
 		return
 	}
 }
 
-// 取值
+// GetValue 取值
 func GetValue(key string) []map[string]string {
 	ctx, _ := context.WithTimeout(context.Background(), time.Second)
 	// cancel()
@@ -61,7 +62,7 @@ func GetValue(key string) []map[string]string {
 	return kvMapList
 }
 
-// 监控
+// Watch 监控
 func Watch(key string) {
 	// 监听
 	//派一个哨兵 一直监视着key的变化（新增，修改，删除）

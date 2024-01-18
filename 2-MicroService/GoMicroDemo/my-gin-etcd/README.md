@@ -42,16 +42,24 @@
 
 ## 三、命令
 ```
-# 1. golang
-go clean --modcache
-go mod init xxMod
+# golang
+go mod init xxx
 go mod tidy
-go mod vendor
-go get xx/xx
+go mod edit -replace github.com/coreos/bbolt@v1.3.8=go.etcd.io/bbolt@v1.3.8
+go mod edit -replace google.golang.org/grpc=google.golang.org/grpc@v1.26.0
 go build
-go run
+go run xx.go
 
-# 2. etcd 
+# etcd
 etcdctl--endpoints=http://127.0.0.1:2379 put xxKey"xxVal"
 etcdctl--endpoints=http://127.0.0.1:2379 get xxKey
+```
+
+## 四、测试
+```
+Zm9vOmJhcg是base64("foo:bar")
+curl -X POST http://localhost:8080/admin \
+-H 'authorization: Basic Zm9vOmJhcg==' \
+-H 'content-type: application/json' \
+-d '{"value":"bar"}'
 ```

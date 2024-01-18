@@ -1,4 +1,4 @@
-package myconfig
+package utils
 
 import (
 	"fmt"
@@ -6,10 +6,10 @@ import (
 	"github.com/spf13/viper"
 )
 
-func Connect(configName string, configType string, configPath string) *viper.Viper {
+func ReadConfig(configName string, configType string, configPath string) *viper.Viper {
 	config := viper.New()
 	if len(configPath) == 0 {
-		configPath = "../configs/"
+		configPath = "./config/"
 	}
 	if len(configName) == 0 {
 		configName = "application"
